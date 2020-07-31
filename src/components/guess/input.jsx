@@ -14,12 +14,16 @@ class InputBox extends React.Component {
         }
         this.onSubmit = this.onSubmit.bind(this);
         this.handleChange = this.handleChange.bind(this);
+        this.change = this.change.bind(this);
     };
+    change=async()=>{
+        await this.state.arr.push(this.state.number);
+        await this.setState({number:''})
 
+    }
     onSubmit = (e) => {
         e.preventDefault();
-        ()=>(this.state.arr.push(this.state.number))    
-        // .then(()=>this.setState({number:''}))
+        this.change();
     };
     handleChange = (e) => {
         var num = parseInt(e.target.value)
