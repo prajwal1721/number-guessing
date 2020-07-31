@@ -16,11 +16,9 @@ class InputBox extends React.Component {
         this.handleChange = this.handleChange.bind(this);
     };
 
-    onSubmit = (e) => {
-        console.log(e.target.value)
-        // this.setState({arr:this.state.arr.push(e.target.value)})
-
-    };
+    onSubmit = () => (
+       this.state.arr.push(this.state.number)
+    );
     handleChange = (e) => {
         var num = parseInt(e.target.value)
         if (isNaN(num) || num < this.state.min || num > this.state.max) {
@@ -41,7 +39,7 @@ class InputBox extends React.Component {
         return (
             <div>
                 <div>
-
+                <form onSubmit={this.onSubmit}>
                     <FormInput
                         handleChange={this.handleChange}
                         label='Enter number'
@@ -59,11 +57,11 @@ class InputBox extends React.Component {
                         }>
                         {this.state.display ? 'Number is not in range' : null}
                     </div>
-                    <button className={` custom-button`}
-                        onSubmit={this.onSubmit}>
+                    <button type='submit'className={` custom-button`}
+                     >
                         Submit
                     </button>
-
+                </form>
                 </div>
                 <History arr={this.state.arr} />
             </div>
