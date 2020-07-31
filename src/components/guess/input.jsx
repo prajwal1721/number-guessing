@@ -3,19 +3,22 @@ import './input.scss'
 import { History } from '../history/history';
 import FormInput from '../form-input/form-input';
 import {ResponseBack} from '../response/response';
+import {Next} from '../next-level/next-level';
+
+
 class InputBox extends React.Component {
-    constructor({ min = 1, max = 100 }) {
+    constructor({match:{params:{max=100}}} ) {
         super();
         this.state = {
             number: '',
-            guess: Math.round(Math.random() * max + 1),
-            max: max,
-            min: min,
+            guess: Math.round(Math.random() *parseInt(parseInt(max)) + 1),
+            max: parseInt(max),
+            min: 1,
             display: false,
             arr: [],
             area: '',
             direction:'',
-            color:'white'
+            color:'white',
         }
         this.onSubmit = this.onSubmit.bind(this);
         this.handleChange = this.handleChange.bind(this);
@@ -82,7 +85,8 @@ class InputBox extends React.Component {
     };
     handleChange = (e) => {
         var num = parseInt(e.target.value)
-        console.log(this.state.guess);
+        // console.log(this.state.props);
+        console.log(this.state.max);
         if (isNaN(num) || num < this.state.min || num > this.state.max) {
             num = '';
             this.setState({
@@ -127,11 +131,10 @@ class InputBox extends React.Component {
                 </div>
                 <History arr={this.state.arr} />
                 <ResponseBack text={this.state.area} direction={this.state.direction} color= {this.state.color} />
-                <button></button>
-                {(this.state.area==='correct'?<div>
-                    <button>End</button>
-                    <button>Next Level</button>
-                    </div>:null)}
+
+                {/* this is not workfing  */}
+            {(this.state.area === 'correct' ?<Next max={this.state.max}/>:null)}
+                
             </div>
         )
     }
