@@ -4,3 +4,5 @@ export const History =({arr})=>(
         {arr.length?arr.map((n)=>`${n} `):'Start'}
     </div>
 );
+
+
