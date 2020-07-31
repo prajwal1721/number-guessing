@@ -16,9 +16,11 @@ class InputBox extends React.Component {
         this.handleChange = this.handleChange.bind(this);
     };
 
-    onSubmit = () => (
-       this.state.arr.push(this.state.number)
-    );
+    onSubmit = (e) => {
+        e.preventDefault();
+        ()=>(this.state.arr.push(this.state.number))    
+        // .then(()=>this.setState({number:''}))
+    };
     handleChange = (e) => {
         var num = parseInt(e.target.value)
         if (isNaN(num) || num < this.state.min || num > this.state.max) {
@@ -64,6 +66,8 @@ class InputBox extends React.Component {
                 </form>
                 </div>
                 <History arr={this.state.arr} />
+                {/* {this.state.arr.length?this.state.arr.map((n)=>`${n}  `):'Start'} */}
+            
             </div>
         )
     }

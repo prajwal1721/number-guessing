@@ -1,6 +1,6 @@
 import  React from 'react';
 export const History =({arr})=>(
     <div>
-        {typeof arr}
+        {arr.length?arr.map((n)=>`${n} `):'Start'}
     </div>
 );
