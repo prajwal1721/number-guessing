@@ -3,16 +3,16 @@ import './input.scss'
 import { History } from '../history/history';
 import FormInput from '../form-input/form-input';
 import {ResponseBack} from '../response/response';
-import {Next} from '../next-level/next-level';
+import {Range} from '../range/range';
 
 
 class InputBox extends React.Component {
-    constructor({match:{params:{max=100}}} ) {
+    constructor( {max=100}) {
         super();
         this.state = {
             number: '',
-            guess: Math.round(Math.random() *parseInt(parseInt(max)) + 1),
-            max: parseInt(max),
+            guess: Math.round(Math.random() *parseInt(max) + 1),
+            max: max,
             min: 1,
             display: false,
             arr: [],
@@ -105,6 +105,7 @@ class InputBox extends React.Component {
         return (
             <div>
                 <div>
+                    {this.state.max}
                     <form onSubmit={this.onSubmit}>
                         <FormInput
                             handleChange={this.handleChange}
@@ -129,11 +130,27 @@ class InputBox extends React.Component {
                     </button>
                     </form>
                 </div>
+                <Range max={this.state.max} />
                 <History arr={this.state.arr} />
                 <ResponseBack text={this.state.area} direction={this.state.direction} color= {this.state.color} />
 
                 {/* this is not workfing  */}
-            {(this.state.area === 'correct' ?<Next max={this.state.max}/>:null)}
+            {(this.state.area === 'correct' ?
+            <div>
+                <button onClick={()=>{
+                    this.setState({
+                        guess: Math.round(Math.random() *parseInt(this.state.max+100) + 1),
+                        max:parseInt(this.state.max)+100,
+                        number:'',
+                        area:'',
+                        direction:'',
+                        arr:[],
+                    })
+                }}>Next level</button>
+                <button>End game</button>
+            </div>
+
+            :null)}
                 
             </div>
         )
