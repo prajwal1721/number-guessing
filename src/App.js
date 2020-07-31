@@ -6,8 +6,7 @@ import './App.scss';
 const App = () => (
   <div className="App-header">
     <Switch>
-      <Route path='/game/:max' component={InputBox} />
-      <Route path='/game' component={InputBox} />
+      <Route exact path='/' component={InputBox} />
     </Switch>
   </div>
 );
