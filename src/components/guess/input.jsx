@@ -70,7 +70,7 @@ class InputBox extends React.Component {
     // function to make sure the user doesn't enter outside the range
     handleChange = (e) => {
         var num = parseInt(e.target.value)
-        // console.log(this.state.props);
+        console.log(this.state.guess);
         console.log(this.state.max);
         if (isNaN(num) || num < this.state.min || num > this.state.max) {
             num = '';
@@ -89,7 +89,10 @@ class InputBox extends React.Component {
     // render
     render() {
         return (
+            <div>
+                <div className='heading'>Number Guessing Game</div>    
             <div className='outer-partiton'>
+                
                 <div className='inner-partition-left'>
                     <div className='formI'>
                         <form onSubmit={this.onSubmit}>
@@ -123,30 +126,31 @@ class InputBox extends React.Component {
                     </div>
 
                 </div>
-
                 {/* on correct guess */}
-            <div className='guess'>
-                {(this.state.area === 'correct' ?
-                    <div>
-                        <button>End game</button>
-                        <button onClick={() => {
-                            this.setState({
-                                guess: Math.round(Math.random() * parseInt(this.state.max + 100) + 1),
-                                max: parseInt(this.state.max) + 100,
-                                number: '',
-                                arr: [],
-                                area: "LET'S",
-                                direction: 'START',
-                                color: 'grey',
-                            })
-                        }}>Next level</button>
-                    </div> : null)}
                 </div>
-            </div>
-        )
-    }
 
-};
+                {(this.state.area === 'correct' ?
+                    <div className='guess'>
+                       
+                            <div className='text' style={{color:'black',fontSize:'48px'}}>Congrats!</div>
+                        <div className='action'>
+                            <button>End game</button>
+                            <button onClick={() => {
+                                this.setState({
+                                    guess: Math.round(Math.random() * parseInt(this.state.max + 100) + 1),
+                                    max: parseInt(this.state.max) + 100,
+                                    number: '',
+                                    arr: [],
+                                    area: "LET'S",
+                                    direction: 'START',
+                                    color: 'rgb(230,50,50)'
+                                })
+                            }}>Next level</button>
+                        </div>
+                    </div> : null)}
+            </div>)
+
+    };
+}
 
 export default InputBox;
-

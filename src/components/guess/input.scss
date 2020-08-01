@@ -28,7 +28,7 @@ input[type="number"] {
   line-height: 50px;
   padding: 0 35px 0 35px;
   font-size: 12px;
-  background-color:rgb(230,50,50);
+  background-color: rgb(230, 50, 50);
   border: 1px solid black;
   opacity: 0.95;
   color: white;
@@ -44,7 +44,7 @@ input[type="number"] {
   &:hover {
     background-color: rgb(255, 80, 80);
     color: black;
-    font-weight: bold ;
+    font-weight: bold;
     border: 1px solid red;
   }
 }
@@ -54,7 +54,6 @@ input[type="number"] {
     &.form {
       border: double 2px #3b3b3b;
     }
-
   }
 }
 
@@ -63,7 +62,7 @@ input[type="number"] {
   margin: 10px;
   display: flex;
   flex: 2;
-  border:  2px thick black;
+  border: 2px thick black;
   // grid-template-columns: 1.2fr 1fr;
   // grid-template-rows: 1fr 1fr ;
   gap: 1px 1px;
@@ -91,14 +90,14 @@ input[type="number"] {
 
   .response {
     box-sizing: border-box;
-    padding: 20px 20px 80px 50px;
-    margin: 20px 20px 80px 50px;
+    padding: 20px 20px 0px 50px;
+    margin: 20px 20px 20px 50px;
   }
 
   .output {
     grid-area: output;
     align-items: center;
-    justify-content: center;  
+    justify-content: center;
     bottom: 20px;
   }
 }
@@ -111,24 +110,72 @@ input[type="number"] {
   justify-content: space-around;
   align-items: center;
   .formI {
-    margin: 20px 80px 20px 80px;
+    margin: 20px 80px 10px 80px;
     padding: 10px 10px 10px 10px;
     display: flex;
-    border:4px double ;
+    border: 4px double;
     justify-content: center;
     align-items: center;
-    // background-color: lightness($color: #ffd452);  
+    // background-color: lightness($color: #ffd452);
   }
   .history {
-    margin: 20px 50px 50px 20px;
+    margin: 10px 50px 20px 20px;
     font-size: 18px;
-    width: 450px;
+    width: 400px;
     padding: 10px;
 
     white-space: nowrap;
   }
 }
 
-.guess{
+.guess {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 350px;
+  margin-top: -200px;
+  margin-left: -200px;
+  // background-color: #00dffd;
+  background-image: linear-gradient(to bottom left, #005aa7, #fffde4);
+  color: white;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  border-radius: 2px;
+  border: 3px solid black;
+  justify-content: space-evenly;
+}
+  .text {
+    background:none;
+    display: flex;
+    flex-direction: row;
+    color: black;
+    text-align: center;
+  }
 
+  .action {
+    background:none;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    &.button {
+      // background:none;
+      display: block;
+      width: 80px;
+      background-image: linear-gradient(to bottom right, #8a2387, #e94057, #f27121);
+      height: 50px;
+      border-radius: 25px;
+      text-align: center;
+      line-height: 46px;
+      text-transform: uppercase;
+      font-weight: 600;
+      transform-style: preserve-3d;
+      transition: all 0.5s ease-in-out;
+      cursor: pointer;
+      // box-shadow: 4px 8px 12px 0 rgba(0, 0, 0, 0.1);
+    }
+  }
+.heading{
+  text-align: center;
+  font-size: 35px;
 }
