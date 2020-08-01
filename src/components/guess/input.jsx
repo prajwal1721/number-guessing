@@ -1,11 +1,11 @@
 import React from 'react';
 import './input.scss'
-import { History } from '../history/history';
+import {Link} from 'react-router-dom';
+import { History  } from '../history/history';
 import FormInput from '../form-input/form-input';
 import { ResponseBack } from '../response/response';
 import { Range } from '../range/range';
 import { Info } from '../info/info';
-
 class InputBox extends React.Component {
     constructor({ max = 100 }) {
         super();
@@ -70,8 +70,8 @@ class InputBox extends React.Component {
     // function to make sure the user doesn't enter outside the range
     handleChange = (e) => {
         var num = parseInt(e.target.value)
-        console.log(this.state.guess);
-        console.log(this.state.max);
+        // console.log(this.state.guess);
+        // console.log(this.state.max);
         if (isNaN(num) || num < this.state.min || num > this.state.max) {
             num = '';
             this.setState({
@@ -134,7 +134,7 @@ class InputBox extends React.Component {
                        
                             <div className='text' style={{color:'black',fontSize:'48px'}}>Congrats!</div>
                         <div className='action'>
-                            <button>End game</button>
+                            <Link  to='/thankyou' >End game</Link>
                             <button onClick={() => {
                                 this.setState({
                                     guess: Math.round(Math.random() * parseInt(this.state.max + 100) + 1),
