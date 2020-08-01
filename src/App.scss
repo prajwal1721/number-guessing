@@ -1,4 +1,19 @@
 *{
-    // height: px;
+    box-sizing: border-box;
     width: 100%;
-}
+    background-size: cover;            
+    background-position: center;
+    background-repeat: no-repeat;     
+    height: fit-content;
+    background-color: #ebffd4;
+    // background-image: linear-gradient(to bottom right, #8A2387,#E94057,#F27121);
+    font-weight: bold;
+ }
+ 
+ .App{
+     margin-top: 5px;
+     display: flex;
+     align-items: center;
+     justify-content: center;
+    
+ }

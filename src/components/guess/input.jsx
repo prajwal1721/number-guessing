@@ -4,7 +4,7 @@ import { History } from '../history/history';
 import FormInput from '../form-input/form-input';
 import { ResponseBack } from '../response/response';
 import { Range } from '../range/range';
-
+import { Info } from '../info/info';
 
 class InputBox extends React.Component {
     constructor({ max = 100 }) {
@@ -16,9 +16,9 @@ class InputBox extends React.Component {
             min: 1,
             display: false,
             arr: [],
-            area: '',
-            direction: '',
-            color: 'white',
+            area: "LET'S",
+            direction: 'START',
+            color: 'rgb(230,50,50)',
         }
         this.onSubmit = this.onSubmit.bind(this);
         this.handleChange = this.handleChange.bind(this);
@@ -38,7 +38,7 @@ class InputBox extends React.Component {
             case diff === 0:
                 this.setState({
                     area: 'correct',
-                    direction: '', color: 'green'
+                    direction: 'RIGHT', color: 'green'
                 })
                 break;
             case diff <= band[1] * fact:
@@ -48,7 +48,7 @@ class InputBox extends React.Component {
                 this.setState({ area: 'warm', color: 'yellow' })
                 break;
             case diff > band[2] * fact:
-                this.setState({ area: 'cold', color: 'blue' })
+                this.setState({ area: 'cold', color: 'cyan' })
                 break;
             default: break;
         }
@@ -91,7 +91,7 @@ class InputBox extends React.Component {
         return (
             <div className='outer-partiton'>
                 <div className='inner-partition-left'>
-                    <div className='form'>
+                    <div className='formI'>
                         <form onSubmit={this.onSubmit}>
                             <FormInput
                                 handleChange={this.handleChange}
@@ -105,7 +105,7 @@ class InputBox extends React.Component {
                                 color: 'red',
                                 fontSize: '20px',
                             }}>{this.state.display ? 'Number is not in range' : null}</div>
-                            <button type='submit' className={`custom-button`}>Submit</button>
+                            <button type='submit' className={`custom-button`}>Try my luck</button>
                         </form>
                     </div>
                     <div className='history'>
@@ -115,32 +115,33 @@ class InputBox extends React.Component {
                 <div className='inner-partition-right'>
                     <div className='range'>
                         <Range max={this.state.max} />
+                        <Info fact={this.state.max / 100} />
                     </div>
-                    <div className='remaining'>
-                        <div className='response'>
-                            <ResponseBack text={this.state.area} direction={this.state.direction} color={this.state.color} />
-                        </div>
-                        <div className='scale'>
-                            
-                        </div>
+
+                    <div className='response'>
+                        <ResponseBack text={this.state.area} direction={this.state.direction} color={this.state.color} />
                     </div>
+
                 </div>
 
                 {/* on correct guess */}
+            <div className='guess'>
                 {(this.state.area === 'correct' ?
-                        <div>
-                            <button onClick={() => {
-                                this.setState({
-                                    guess: Math.round(Math.random() * parseInt(this.state.max + 100) + 1),
-                                    max: parseInt(this.state.max) + 100,
-                                    number: '',
-                                    area: '',
-                                    direction: '',
-                                    arr: [],
-                                })}}>Next level</button>
-                                <button>End game</button>
-                        </div>: null)}
-
+                    <div>
+                        <button>End game</button>
+                        <button onClick={() => {
+                            this.setState({
+                                guess: Math.round(Math.random() * parseInt(this.state.max + 100) + 1),
+                                max: parseInt(this.state.max) + 100,
+                                number: '',
+                                arr: [],
+                                area: "LET'S",
+                                direction: 'START',
+                                color: 'grey',
+                            })
+                        }}>Next level</button>
+                    </div> : null)}
+                </div>
             </div>
         )
     }
@@ -148,3 +149,4 @@ class InputBox extends React.Component {
 };
 
 export default InputBox;
+

@@ -1,0 +1,31 @@
+.info{
+    display: flex;
+    flex-direction: row ;
+    padding: 5px 30px 0px 30px;
+}
+.text{
+    font-size: 16px;
+    padding : 2px;
+    text-align: center;
+
+}
+.part{
+    text-align: center;
+    border: 1px solid black;
+}
+.part2{
+    // border: 1px solid black;
+    display: flex;
+    flex-direction: row ;
+    text-align: start;
+    padding: 5px 30px 0px 30px;
+}
+.info-more{
+    padding: 10px 30px 10px 30px;
+    // : 10px 10px 10px 10px;
+}
+.Head{
+    text-align: center;
+    padding: 10px 0px 10px 0px;
+    font-size: 20px;
+}

@@ -1,10 +1,10 @@
 import React from 'react';
 import InputBox from './components/guess/input';
-import { Route, Switch,withRouter } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 
 import './App.scss';
 const App = () => (
-  <div className="App-header">
+  <div className="App">
     <Switch>
       <Route exact path='/' component={InputBox} />
     </Switch>
@@ -13,4 +13,4 @@ const App = () => (
 
 
 
-export default withRouter(App);
+export default App;
